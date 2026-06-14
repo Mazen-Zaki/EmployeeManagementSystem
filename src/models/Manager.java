@@ -1,3 +1,8 @@
+package models;
+
+import calculators.ManagerSalaryCalculator;
+import calculators.SalaryCalculator;
+
 public class Manager extends Employee
 {
     private int teamSize;
@@ -35,7 +40,8 @@ public class Manager extends Employee
     @Override
     public double calculateSalary()
     {
-        return getBaseSalary() + (getBaseSalary() * bonusPercentage / 100);
+        SalaryCalculator calc = new ManagerSalaryCalculator();
+        return calc.calculate(getBaseSalary(),bonusPercentage);
     }
 
     @Override

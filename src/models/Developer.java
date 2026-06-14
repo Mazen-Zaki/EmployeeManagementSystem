@@ -1,3 +1,7 @@
+package models;
+
+import calculators.DeveloperSalaryCalculator;
+import calculators.SalaryCalculator;
 import enums.SeniorityLevel;
 
 import enums.TechStack;
@@ -7,7 +11,7 @@ import java.util.List;
 
 public class Developer extends Employee
 {
-    private SeniorityLevel seniorityLevel;
+    public SeniorityLevel seniorityLevel;
     private List<TechStack> techStack;
 
 
@@ -58,6 +62,7 @@ public class Developer extends Employee
     @Override
     public double calculateSalary()
     {
+        SalaryCalculator calc = new DeveloperSalaryCalculator();
         double multiplier = switch (seniorityLevel)
         {
           case JUNIOR -> 1.0;
@@ -65,12 +70,12 @@ public class Developer extends Employee
           case SENIOR -> 1.6;
         };
 
-        return getBaseSalary() * multiplier;
+        return calc.calculate(getBaseSalary() , multiplier);
     }
 
     @Override
     public String getRole()
     {
-        return "Developer - " + getSeniorityLevel().getDisplayName();
+        return "Developer - " + getSeniorityLevel().getDisplayName() + " Developer";
     }
 }

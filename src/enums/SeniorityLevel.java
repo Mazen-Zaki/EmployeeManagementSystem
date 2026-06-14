@@ -2,9 +2,9 @@ package enums;
 
 public enum SeniorityLevel
 {
-    JUNIOR("Junior Developer"),
-    MID("Mid-Level Developer"),
-    SENIOR("Senior Developer");
+    JUNIOR("Junior"),
+    MID("Mid-Level"),
+    SENIOR("Senior");
 
     private final String displayName;
 

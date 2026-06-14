@@ -1,3 +1,8 @@
+package models;
+
+import calculators.InternSalaryCalculator;
+import calculators.SalaryCalculator;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -50,7 +55,8 @@ public class Intern extends Employee
     @Override
     public double calculateSalary()
     {
-        return getBaseSalary();
+        SalaryCalculator calc = new InternSalaryCalculator();
+        return calc.calculate(getBaseSalary(), 0);
     }
 
     @Override
