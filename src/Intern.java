@@ -46,4 +46,16 @@ public class Intern extends Employee
     {
         return mentor;
     }
+
+    @Override
+    public double calculateSalary()
+    {
+        return getBaseSalary();
+    }
+
+    @Override
+    public String getRole()
+    {
+        return "Intern" ;
+    }
 }

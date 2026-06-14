@@ -1,11 +1,13 @@
-public class Employee extends Person
+public abstract class Employee extends Person
 {
+
     private int employeeID;
     private String department;
     private int baseSalary;
     private int bonus;
 
 
+    /* constructors */
     public Employee(String firstName, String lastName, String email, int age, int employeeID,
              int baseSalary, String department, int bonus)
     {
@@ -16,6 +18,8 @@ public class Employee extends Person
         this.department = department;
     }
 
+
+    /* concrete classes */
     protected void setEmployeeID(int employeeID)
     {
         this.employeeID = employeeID;
@@ -55,4 +59,8 @@ public class Employee extends Person
     {
         return department;
     }
+
+    /* abstract classes */
+    public abstract double calculateSalary();
+    public abstract String getRole();
 }

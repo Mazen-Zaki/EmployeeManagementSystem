@@ -1,11 +1,11 @@
-public class Person
+public abstract class Person
 {
     private String firstName;
     private String lastName;
     private int age;
     private String email;
 
-    Person(String firstName, String lastName, String email, int age)
+    public Person(String firstName, String lastName, String email, int age)
     {
         this.firstName = firstName;
         this.lastName = lastName;

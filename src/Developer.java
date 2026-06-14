@@ -39,7 +39,7 @@ public class Developer extends Employee
         return new ArrayList<>(techStack);
     }
 
-    public void addTechStack(TechStack tech)
+    protected void addTechStack(TechStack tech)
     {
         if (!techStack.contains(tech))
         {
@@ -47,11 +47,30 @@ public class Developer extends Employee
         }
     }
 
-    public void removeTechStack(TechStack tech)
+    protected void removeTechStack(TechStack tech)
     {
         if (techStack.contains(tech))
         {
             techStack.remove(tech);
         }
+    }
+
+    @Override
+    public double calculateSalary()
+    {
+        double multiplier = switch (seniorityLevel)
+        {
+          case JUNIOR -> 1.0;
+          case MID -> 1.3;
+          case SENIOR -> 1.6;
+        };
+
+        return getBaseSalary() * multiplier;
+    }
+
+    @Override
+    public String getRole()
+    {
+        return "Developer - " + getSeniorityLevel().getDisplayName();
     }
 }

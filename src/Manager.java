@@ -4,7 +4,7 @@ public class Manager extends Employee
     private double bonusPercentage;
 
 
-    Manager(String firstName, String lastName, String email, int age, int employeeID,
+    public Manager(String firstName, String lastName, String email, int age, int employeeID,
             int baseSalary, String department, int bonus, int teamSize, double bonusPercentage)
     {
         super(firstName, lastName, email, age, employeeID, baseSalary, department, bonus);
@@ -30,5 +30,19 @@ public class Manager extends Employee
     protected double getBonusPercentage()
     {
         return bonusPercentage;
+    }
+
+    @Override
+    public double calculateSalary()
+    {
+
+
+        return getBaseSalary() * (getBaseSalary() * bonusPercentage / 100);
+    }
+
+    @Override
+    public String getRole()
+    {
+        return "Manager";
     }
 }
