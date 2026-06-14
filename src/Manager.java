@@ -35,9 +35,7 @@ public class Manager extends Employee
     @Override
     public double calculateSalary()
     {
-
-
-        return getBaseSalary() * (getBaseSalary() * bonusPercentage / 100);
+        return getBaseSalary() + (getBaseSalary() * bonusPercentage / 100);
     }
 
     @Override

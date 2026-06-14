@@ -7,7 +7,7 @@ public abstract class Employee extends Person
     private int bonus;
 
 
-    /* constructors */
+
     public Employee(String firstName, String lastName, String email, int age, int employeeID,
              int baseSalary, String department, int bonus)
     {
@@ -19,43 +19,43 @@ public abstract class Employee extends Person
     }
 
 
-    /* concrete classes */
-    protected void setEmployeeID(int employeeID)
+
+    public void setEmployeeID(int employeeID)
     {
         this.employeeID = employeeID;
     }
 
-    protected void setBaseSalary(int baseSalary)
+    public void setBaseSalary(int baseSalary)
     {
         this.baseSalary = baseSalary;
     }
 
-    protected void setBonus(int bonus)
+    public void setBonus(int bonus)
     {
         this.bonus = bonus;
     }
 
-    protected void setDepartment(String department)
+    public void setDepartment(String department)
     {
         this.department = department;
     }
 
-    protected int getEmployeeID()
+    public int getEmployeeID()
     {
         return employeeID;
     }
 
-    protected int getBaseSalary()
+    public int getBaseSalary()
     {
         return baseSalary;
     }
 
-    protected int getBonus()
+    public int getBonus()
     {
         return bonus;
     }
 
-    protected String getDepartment()
+    public String getDepartment()
     {
         return department;
     }
