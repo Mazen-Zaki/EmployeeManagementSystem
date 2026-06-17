@@ -21,9 +21,13 @@ public class Main
                 1, 10000, "Engineering", 0,
                 SeniorityLevel.MID, List.of(TechStack.JAVA, TechStack.DOCKER));
 
+        Developer dev = (Developer) employees[0];
+
         employees[1] = new Manager("Ahmed", "Ali", "ahmed@email.com", 35,
                 2, 15000, "Engineering", 0,
                 5, 20.0);
+
+        Manager manager = (Manager) employees[1];
 
         employees[2] = new Intern("Sara", "Mohamed", "sara@email.com", 21,
                 3, 3000, "Engineering", 0,
@@ -36,5 +40,17 @@ public class Main
             System.out.println("Salary: " + emp.calculateSalary());
             System.out.println("---");
         }
+
+        // Before promotion
+        System.out.println("Before: " + dev.getRole() + " | Salary: " + dev.calculateSalary());
+        dev.promote();
+        // After promotion
+        System.out.println("After: " + dev.getRole() + " | Salary: " + dev.calculateSalary());
+
+        System.out.println("---");
+
+        System.out.println("Before: " + manager.getRole() + " | Salary: " + manager.calculateSalary());
+        manager.promote();
+        System.out.println("After: " + manager.getRole() + " | Salary: " + manager.calculateSalary());
     }
 }

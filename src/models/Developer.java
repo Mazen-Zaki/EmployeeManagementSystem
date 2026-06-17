@@ -5,13 +5,15 @@ import calculators.SalaryCalculator;
 import enums.SeniorityLevel;
 
 import enums.TechStack;
+import promotions.DeveloperPromotion;
+import promotions.Promotable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Developer extends Employee
 {
-    public SeniorityLevel seniorityLevel;
+    private SeniorityLevel seniorityLevel;
     private List<TechStack> techStack;
 
 
@@ -23,7 +25,7 @@ public class Developer extends Employee
         this.techStack = new ArrayList<>(techStack);
     }
 
-    protected void setSeniorityLevel(SeniorityLevel seniorityLevel)
+    public void setSeniorityLevel(SeniorityLevel seniorityLevel)
     {
         this.seniorityLevel = seniorityLevel;
     }
@@ -33,7 +35,7 @@ public class Developer extends Employee
         this.techStack = techStack;
     }
 
-    protected SeniorityLevel getSeniorityLevel()
+    public SeniorityLevel getSeniorityLevel()
     {
         return seniorityLevel;
     }
@@ -59,6 +61,12 @@ public class Developer extends Employee
         }
     }
 
+    public void promote()
+    {
+        Promotable promotion = new DeveloperPromotion(this);
+        promotion.promote();
+    }
+
     @Override
     public double calculateSalary()
     {
@@ -78,4 +86,6 @@ public class Developer extends Employee
     {
         return "Developer - " + getSeniorityLevel().getDisplayName() + " Developer";
     }
+
+
 }

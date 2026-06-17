@@ -2,6 +2,8 @@ package models;
 
 import calculators.ManagerSalaryCalculator;
 import calculators.SalaryCalculator;
+import promotions.ManagerPromotion;
+import promotions.Promotable;
 
 public class Manager extends Employee
 {
@@ -22,7 +24,7 @@ public class Manager extends Employee
         this.teamSize = teamSize;
     }
 
-    protected void setBonusPercentage(double bonusPercentage)
+    public void setBonusPercentage(double bonusPercentage)
     {
         this.bonusPercentage = bonusPercentage;
     }
@@ -32,9 +34,15 @@ public class Manager extends Employee
         return teamSize;
     }
 
-    protected double getBonusPercentage()
+    public double getBonusPercentage()
     {
         return bonusPercentage;
+    }
+
+    public void promote()
+    {
+        Promotable promotion = new ManagerPromotion(this);
+        promotion.promote();
     }
 
     @Override
