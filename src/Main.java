@@ -1,7 +1,7 @@
+import database.EmployeeManager;
 import enums.SeniorityLevel;
 import enums.TechStack;
 import models.Developer;
-import models.Employee;
 import models.Intern;
 import models.Manager;
 
@@ -15,42 +15,33 @@ public class Main
     public static void main(String[] args)
     {
         // Polymorphism — all stored as models.Employee type
-        Employee[] employees = new Employee[3];
 
-        employees[0] = new Developer("Mazen", "Zaki", "mazen@email.com", 24,
+
+        Developer dev = new Developer("Mazen", "Zaki", "mazen@email.com", 24,
                 1, 10000, "Engineering", 0,
                 SeniorityLevel.MID, List.of(TechStack.JAVA, TechStack.DOCKER));
 
-        Developer dev = (Developer) employees[0];
+        Manager mgr = new Manager("Ahmed", "Ali", "ahmed@email.com", 35,
+            2, 15000, "Engineering", 0,
+            5, 20.0);
 
-        employees[1] = new Manager("Ahmed", "Ali", "ahmed@email.com", 35,
-                2, 15000, "Engineering", 0,
-                5, 20.0);
 
-        Manager manager = (Manager) employees[1];
-
-        employees[2] = new Intern("Sara", "Mohamed", "sara@email.com", 21,
+        Intern intern = new Intern("Sara", "Mohamed", "sara@email.com", 21,
                 3, 3000, "Engineering", 0,
-                (Developer) employees[0], LocalDate.now(), LocalDate.now().plusMonths(6));
+                dev, LocalDate.now(), LocalDate.now().plusMonths(6));
 
-        // Polymorphism in action — same loop, different behavior
-        for (Employee emp : employees)
-        {
-            System.out.println("Role: " + emp.getRole());
-            System.out.println("Salary: " + emp.calculateSalary());
-            System.out.println("---");
-        }
+        EmployeeManager manager = EmployeeManager.getInstance();
 
-        // Before promotion
-        System.out.println("Before: " + dev.getRole() + " | Salary: " + dev.calculateSalary());
-        dev.promote();
-        // After promotion
-        System.out.println("After: " + dev.getRole() + " | Salary: " + dev.calculateSalary());
+        manager.addEmployee(dev);
+        manager.addEmployee(mgr);
+        manager.addEmployee(intern);
 
-        System.out.println("---");
+        manager.printAll();
 
-        System.out.println("Before: " + manager.getRole() + " | Salary: " + manager.calculateSalary());
-        manager.promote();
-        System.out.println("After: " + manager.getRole() + " | Salary: " + manager.calculateSalary());
+        System.out.println("Found: " + manager.findEmployee(1).getRole());
+
+        manager.removeEmployee(2);
+        System.out.println("After removing Manager:");
+        manager.printAll();
     }
 }
