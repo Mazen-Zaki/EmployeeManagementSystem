@@ -6,6 +6,9 @@ import models.Developer;
 import models.Employee;
 import observes.NotificationService;
 import observes.PayrollSystem;
+import strategies.SearchByDepartment;
+import strategies.SearchByID;
+import strategies.SearchByName;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -50,7 +53,24 @@ public class Main
 
         manager.printAll();
 
-        System.out.println("Found: " + manager.findEmployee(1).getRole());
+        System.out.println("\n ------- \n");
+
+
+        // Search by ID
+        Employee found = manager.search(new SearchByID(), "1");
+        System.out.println("Search by ID: " + found.getRole());
+
+        // Search by Name
+        Employee byName = manager.search(new SearchByName(), "Mazen");
+        System.out.println("Search by Name: " + byName.getRole());
+
+        // Search by Department
+        Employee byDept = manager.search(new SearchByDepartment(), "Engineering");
+        System.out.println("Search by Department: " + byDept.getRole());
+
+        System.out.println("\n ------- \n");
+
+
 
         manager.removeEmployee(2);
         System.out.println("After removing Manager:");

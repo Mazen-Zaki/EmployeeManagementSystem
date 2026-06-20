@@ -1,6 +1,8 @@
 package database;
 
 import models.Employee;
+import strategies.SearchByID;
+import strategies.SearchStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,22 +36,13 @@ public class EmployeeManager
 
     public void removeEmployee(int employeeID)
     {
-        Employee emp = findEmployee(employeeID);
+        Employee emp = search(new SearchByID(), String.valueOf(employeeID));
         if (emp == null)
             System.out.println("Employee not found - 404");
         else
             employees.remove(emp);
     }
 
-    public Employee findEmployee(int employeeID)
-    {
-        for (Employee emp : employees)
-        {
-            if(emp.getEmployeeID() == employeeID)
-                return emp;
-        }
-        return null;
-    }
 
     public void printAll()
     {
@@ -59,6 +52,11 @@ public class EmployeeManager
             System.out.println("Salary: " + emp.calculateSalary());
             System.out.println("---");
         }
+    }
+
+    public Employee search(SearchStrategy strategy, String keyword)
+    {
+        return strategy.search(employees, keyword);
     }
 
 }
