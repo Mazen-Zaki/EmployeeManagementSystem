@@ -43,6 +43,8 @@ public class Manager extends Employee
     {
         Promotable promotion = new ManagerPromotion(this);
         promotion.promote();
+
+        notifyObservers("PROMOTED");
     }
 
     @Override

@@ -4,8 +4,8 @@ import enums.TechStack;
 import factory.EmployeeFactory;
 import models.Developer;
 import models.Employee;
-import models.Intern;
-import models.Manager;
+import observes.NotificationService;
+import observes.PayrollSystem;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -16,7 +16,9 @@ public class Main
 {
     public static void main(String[] args)
     {
-        // Polymorphism — all stored as models.Employee type
+        PayrollSystem payroll = new PayrollSystem();
+        NotificationService notification = new NotificationService();
+
 
 
         Employee dev = EmployeeFactory.createEmployee("Mazen", "Zaki", "mazen@email.com", 24,
@@ -37,6 +39,14 @@ public class Main
         manager.addEmployee(dev);
         manager.addEmployee(mgr);
         manager.addEmployee(intern);
+
+        dev.addObserver(payroll);
+        dev.addObserver(notification);
+        manager.printAll();
+
+        System.out.println("\n ------- \n");
+
+        dev.promote(); // should trigger both observers
 
         manager.printAll();
 

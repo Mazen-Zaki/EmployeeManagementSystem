@@ -65,6 +65,8 @@ public class Developer extends Employee
     {
         Promotable promotion = new DeveloperPromotion(this);
         promotion.promote();
+
+        notifyObservers("PROMOTED");
     }
 
     @Override

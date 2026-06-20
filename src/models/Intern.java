@@ -64,4 +64,7 @@ public class Intern extends Employee
     {
         return "Intern" ;
     }
+
+    @Override
+    public void promote(){}
 }

@@ -1,6 +1,12 @@
 package models;
 
-public abstract class Employee extends Person
+import observes.Observable;
+import observes.Observer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Employee extends Person implements Observable
 {
 
     private int employeeID;
@@ -8,6 +14,7 @@ public abstract class Employee extends Person
     private int baseSalary;
     private int bonus;
 
+    private List<Observer> observers = new ArrayList<>();
 
 
     public Employee(String firstName, String lastName, String email, int age, int employeeID,
@@ -62,7 +69,33 @@ public abstract class Employee extends Person
         return department;
     }
 
+
+    @Override
+    public void addObserver(Observer observe)
+    {
+        observers.add(observe);
+    }
+
+
+    @Override
+    public void removeObserve(Observer observe)
+    {
+        observers.remove(observe);
+    }
+
+
+    @Override
+    public void notifyObservers(String event)
+    {
+        for (Observer observer : observers)
+        {
+            observer.update(this, event);
+        }
+    }
+
+
     /* abstract classes */
     public abstract double calculateSalary();
     public abstract String getRole();
+    public abstract void promote();
 }

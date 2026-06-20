@@ -35,7 +35,7 @@ public abstract class Person
         this.email = email;
     }
 
-    protected String getFirstname()
+    public String getFirstname()
     {
         return firstName;
     }
