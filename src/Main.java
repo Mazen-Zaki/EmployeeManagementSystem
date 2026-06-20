@@ -1,7 +1,9 @@
 import database.EmployeeManager;
 import enums.SeniorityLevel;
 import enums.TechStack;
+import factory.EmployeeFactory;
 import models.Developer;
+import models.Employee;
 import models.Intern;
 import models.Manager;
 
@@ -17,18 +19,18 @@ public class Main
         // Polymorphism — all stored as models.Employee type
 
 
-        Developer dev = new Developer("Mazen", "Zaki", "mazen@email.com", 24,
+        Employee dev = EmployeeFactory.createEmployee("Mazen", "Zaki", "mazen@email.com", 24,
                 1, 10000, "Engineering", 0,
                 SeniorityLevel.MID, List.of(TechStack.JAVA, TechStack.DOCKER));
 
-        Manager mgr = new Manager("Ahmed", "Ali", "ahmed@email.com", 35,
+        Employee mgr = EmployeeFactory.createEmployee("Ahmed", "Ali", "ahmed@email.com", 35,
             2, 15000, "Engineering", 0,
             5, 20.0);
 
 
-        Intern intern = new Intern("Sara", "Mohamed", "sara@email.com", 21,
+        Employee intern = EmployeeFactory.createEmployee("Sara", "Mohamed", "sara@email.com", 21,
                 3, 3000, "Engineering", 0,
-                dev, LocalDate.now(), LocalDate.now().plusMonths(6));
+                (Developer) dev, LocalDate.now(), LocalDate.now().plusMonths(6));
 
         EmployeeManager manager = EmployeeManager.getInstance();
 
