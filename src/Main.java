@@ -57,7 +57,7 @@ public class Main
 
 
         // Search by ID
-        Employee found = manager.search(new SearchByID(), "1");
+        Employee found = manager.search(new SearchByID(), 1);
         System.out.println("Search by ID: " + found.getRole());
 
         // Search by Name

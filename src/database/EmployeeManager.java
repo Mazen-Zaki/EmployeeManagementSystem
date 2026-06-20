@@ -36,7 +36,7 @@ public class EmployeeManager
 
     public void removeEmployee(int employeeID)
     {
-        Employee emp = search(new SearchByID(), String.valueOf(employeeID));
+        Employee emp = search(new SearchByID(), 1);
         if (emp == null)
             System.out.println("Employee not found - 404");
         else
@@ -57,6 +57,11 @@ public class EmployeeManager
     public Employee search(SearchStrategy strategy, String keyword)
     {
         return strategy.search(employees, keyword);
+    }
+
+    public Employee search(SearchStrategy strategy, int id)
+    {
+        return strategy.search(employees, String.valueOf(id));
     }
 
 }

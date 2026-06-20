@@ -78,7 +78,7 @@ public abstract class Employee extends Person implements Observable
 
 
     @Override
-    public void removeObserve(Observer observe)
+    public void removeObserver(Observer observe)
     {
         observers.remove(observe);
     }
